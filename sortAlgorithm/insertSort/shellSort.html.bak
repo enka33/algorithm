@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>希尔排序</title>
+		<script>
+			var selectSort = function(arr) {//选择最小放最前
+				var len = arr.length;
+				var temp = 0;
+				for(var i = 0; i < len-1; i++) {
+					var min = i;
+					for(var j = i+1; j < len; j++) {//找出最小数对应的下标
+						if(arr[j] < arr[min]) {
+							min = j;
+						}
+					}
+					if(min != i) {//交换，若最小数是当前数，则不用交换
+						temp = arr[i];
+						arr[i] = arr[min];
+						arr[min] = temp;
+					}
+				}
+				return arr;
+			}
+			console.log(selectSort([21,34,1,4,68]));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

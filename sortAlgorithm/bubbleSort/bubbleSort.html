@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>冒泡排序</title>
+		<script>
+			var bubbleSort = function(arr) {//沉最大
+				var temp = 0;
+				var len = arr.length;
+				for(var i = 0; i < len-1; i++) {
+					for(var j = 0; j < len-1-i; j++) {
+						if(arr[j] > arr[j+1]) {
+							temp = arr[j];
+							arr[j] = arr[j+1];
+							arr[j+1] = temp;
+						}
+					}
+				}
+				return arr;
+			}
+			console.log(bubbleSort([21,34,1,4,68]));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
