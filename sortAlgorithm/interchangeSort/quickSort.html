@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>快速排序</title>
+		<script>
+			var swap = function(arr, low, high) {
+				var temp = arr[low];
+				arr[low] = arr[high];
+				arr[high] = temp;
+			}
+			var getMiddle = function(arr, low, high) {
+				var key = arr[low];
+				while(low < high) {
+					while(low < high && arr[high] >= key) --high;
+					swap(arr, low, high);
+					while(low < high && arr[low] <= key) ++low;
+					swap(arr, low, high);
+				}
+				return low;
+			}
+			var quickSort = function(arr, low, high) {
+				if(low < high) {
+					var curLow = getMiddle(arr, low, high);
+					quickSort(arr, low, curLow-1);
+					quickSort(arr, curLow+1, high);
+				}
+				return arr;
+			}
+			console.log(quickSort([21,34,1,4,68,1,100,2,45], 0, 8));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
