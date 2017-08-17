@@ -1,0 +1,80 @@
+冒泡：
+var bubbleSort=function(arr){
+	var len=arr.length;
+	var temp=0;
+	for(var i=0;i<len-1;i++){
+		for(var j=0;j<len-1-i;j++){
+			if(arr[j]>arr[j+1]){
+				temp=arr[j];
+				arr[j]=arr[j+1];
+				arr[j+1]=temp;
+			}
+		}
+	}
+	return arr;
+}
+
+简单选择：
+var selectSort = function(arr){
+	var len=arr.length;
+	var temp=0;
+	var min = 0;
+	for(var i=0;i<len-1;i++){
+		temp=arr[i];
+		min=i;
+		for(var j=i;j<len-1;j++){
+			if(arr[min]>arr[j+1]){
+				min=j+1;
+			}
+		}
+		if(min!=i){
+			arr[i]=arr[min];
+			arr[min]=temp;
+		}
+	}
+	return arr;
+}
+
+直接插入：
+var insertSort = function(arr){
+	var len=arr.length;
+	var j=0;
+	var key=0;
+	for(var i=1;i<len;i++){
+		j=i;
+		key=arr[i];
+		while(j>0&&arr[j-1]>key){
+			arr[j]=arr[j-1];
+			j--;
+		}
+		arr[j]=key;	
+	}
+	return arr;	
+}
+
+快速排序：
+var swap=function(arr,low,high){
+	var temp=arr[low];
+	arr[low]=arr[high];
+	arr[high]=temp;
+}
+
+var gatMiddle=function(arr,low,high){
+	var key=arr[low];
+	while(low<high){
+		while(low<high&&arr[high]>=key) --high;
+		swap(arr,low,high);
+		while(low<high&&arr[low]<=key) ++low;
+		swap(arr,low,high);
+	}
+	return low;
+}
+
+var quickSort=function(arr,low,high) {
+	if(low<high){
+		var middle=getMiddle(arr,low,high);
+		quickSort(arr,low,middle-1);
+		quickSort(arr,middle+1,high);
+	}
+	return arr;
+}

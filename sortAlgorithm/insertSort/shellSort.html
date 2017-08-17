@@ -4,8 +4,32 @@
 		<meta charset="UTF-8" />
 		<title>希尔排序</title>
 		<script>
+			var dirctInsertSort = function(arr, len, step) {
+				var key = 0;
+				var j = 0;
+				for(var i = step; i < len; i += step) {
+					key = arr[i];
+					j = i-step;
+					while(j >= 0 && key < arr[j]) {
+						arr[j+step] = arr[j];
+						j = j - step;
+					}
+					arr[j+step] = key;
+				}
+				return arr;
+			}
 			
-			console.log(selectSort([21,34,1,4,68]));
+			var shellSort = function(arr) {
+				var len = arr.length;
+				var step = len/2;
+				while(step >= 1) {
+					dirctInsertSort(arr, len, step);
+					step /= 2;
+				}
+				return arr;
+			}
+			console.log(shellSort([21,34,1,4,68]));
+			console.log(dirctInsertSort([21,34,1,4,1,68], 6, 1));
 		</script>
 	</head>
 	<body>

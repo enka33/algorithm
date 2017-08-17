@@ -4,25 +4,32 @@
 		<meta charset="UTF-8" />
 		<title>希尔排序</title>
 		<script>
-			var selectSort = function(arr) {//选择最小放最前
-				var len = arr.length;
-				var temp = 0;
-				for(var i = 0; i < len-1; i++) {
-					var min = i;
-					for(var j = i+1; j < len; j++) {//找出最小数对应的下标
-						if(arr[j] < arr[min]) {
-							min = j;
-						}
+			var dirctInsertSort = function(arr, len, step) {
+				var key = 0;
+				var j = 0;
+				for(var i = 1; i < len; i += step) {
+					key = arr[i];
+					j = i-step;
+					while(j >= 0 && key < arr[j]) {
+						arr[j+step] = arr[j];
+						j = j - step;
 					}
-					if(min != i) {//交换，若最小数是当前数，则不用交换
-						temp = arr[i];
-						arr[i] = arr[min];
-						arr[min] = temp;
-					}
+					arr[j+step] = key;
 				}
 				return arr;
 			}
-			console.log(selectSort([21,34,1,4,68]));
+			
+			var shellSort = function(arr) {
+				var len = arr.length;
+				var step = len/2;
+				while(step >= 1) {
+					dirctInsertSort(arr, len, step);
+					step /= 2;
+				}
+				return arr;
+			}
+			console.log(shellSort([21,34,1,4,68]));
+			console.log(dirctInsertSort([21,34,1,4,1,68], 6, 1));
 		</script>
 	</head>
 	<body>

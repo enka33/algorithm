@@ -23,24 +23,24 @@
 				return arr;
 			}*/
 			var selectSort = function(arr){
-				var len=arr.length;
-				var temp=0;
-				var min = 0;
-				for(var i=0;i<len-1;i++){
-					temp=arr[i];
-					min=i;
-					for(var j=i;j<len-1;j++){
-						if(arr[min]>arr[j+1]){
-							min=j+1;
-						}
-					}
-					if(min!=i){
-						arr[i]=arr[min];
-						arr[min]=temp;
-					}
-				}
-				return arr;
+	var len=arr.length;
+	var temp=0;
+	var min = 0;
+	for(var i=0;i<len-1;i++){
+		temp=arr[i];
+		min=i;
+		for(var j=i;j<len-1;j++){
+			if(arr[min]>arr[j+1]){
+				min=j+1;
 			}
+		}
+		if(min!=i){
+			arr[i]=arr[min];
+			arr[min]=temp;
+		}
+	}
+	return arr;
+}
 			console.log(selectSort([21,34,1,4,68]));
 		</script>
 	</head>

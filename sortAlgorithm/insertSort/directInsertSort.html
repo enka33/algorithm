@@ -4,19 +4,35 @@
 		<meta charset="UTF-8" />
 		<title>直接插入排序</title>
 		<script>
-			var insertSort = function(arr) {
+			/*var insertSort = function(arr) {
 				var len = arr.length;
 				for(var i = 1; i < len; i++) {//i之前的数都按照由小到大的顺序排好
 					var key = arr[i];//将当前位保存(标记位)
 					var j = i-1;//之前数下标
 					//于标记位之前排好序的数进行比较，标记位大于前一位，则什么都不做
 					//否则将前一位后移一位，依次与之前排好的数进行比较，若小于之前数，之前数后移，直到(j=0)比较完毕或标记位大于之前位，跳出循环
-					while(j > 0 && key < arr[j]) {
+					while(j >= 0 && key < arr[j]) {
 						arr[j+1] = arr[j];
 						j--;//前移一位
 					}
 					arr[j+1] = key;//标记位上位，将标记位放到空白位
 				}
+				return arr;
+			}*/
+			var insertSort = function(arr){
+				var len=arr.length;
+				var j=0;
+				var key=0;
+				for(var i=1;i<len;i++){
+					j=i-1;
+					key=arr[i];
+					while(j>=0&&arr[j]>key){
+						arr[j+1]=arr[j];
+						j--;
+					}
+					arr[j+1]=key;	
+				}
+				return arr;	
 			}
 			console.log(insertSort([21,34,1,4,68]));
 		</script>

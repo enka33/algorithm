@@ -12,7 +12,7 @@
 			var getMiddle = function(arr, low, high) {
 				var key = arr[low];
 				while(low < high) {
-					while(low < high && arr[high] >= key) --high;
+					while(low < high && arr[high] >= key) --high;//等于号很关键
 					swap(arr, low, high);
 					while(low < high && arr[low] <= key) ++low;
 					swap(arr, low, high);
@@ -27,7 +27,8 @@
 				}
 				return arr;
 			}
-			console.log(quickSort([21,34,1,4,68,1,100,2,45], 0, 4));
+
+			console.log(quickSort([21,34,1,4,68,1,100,2,45], 0, 8));
 		</script>
 	</head>
 	<body>
